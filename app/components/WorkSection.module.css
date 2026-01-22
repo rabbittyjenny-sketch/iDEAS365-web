@@ -1,0 +1,226 @@
+.section {
+    padding: var(--space-8) 0;
+    background-color: var(--color-space-white);
+}
+
+.header {
+    margin-bottom: var(--space-8);
+    text-align: center;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-4);
+}
+
+.subtitle {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
+    flex-wrap: wrap;
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background-color: transparent;
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.tab:hover {
+    border-color: var(--color-text-secondary);
+    background-color: var(--color-bg-secondary);
+}
+
+.tab.active {
+    background-color: transparent;
+    border-color: var(--color-text-primary);
+    color: var(--color-text-primary);
+    font-weight: 600;
+}
+
+.navDot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 2px solid transparent;
+    /* default */
+}
+
+.tab:hover .navDot {
+    transform: scale(1.2);
+}
+
+.tab.active .navDot {
+    border-color: transparent;
+    box-shadow: none;
+    transform: scale(1.1);
+}
+
+.tabLabel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.2;
+}
+
+.tabIcon {
+    font-size: var(--text-lg);
+}
+
+/* Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-6);
+    margin-bottom: var(--space-12);
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-4);
+}
+
+.cardIcon {
+    font-size: var(--text-2xl);
+    background-color: var(--color-bg-secondary);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+}
+
+.projectDot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin-bottom: var(--space-4);
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+    /* Halo effect */
+}
+
+.circle-blue {
+    background-color: var(--color-system-blue);
+}
+
+.circle-yellow {
+    background-color: var(--color-insight-yellow);
+}
+
+.circle-red {
+    background-color: var(--color-action-red);
+}
+
+.circle-green {
+    background-color: var(--color-growth-green);
+}
+
+.circle-transparent {
+    background-color: transparent;
+    border: 2px solid var(--color-border);
+    /* Hollow circle for 'All' */
+}
+
+.cardTitle {
+    font-size: var(--text-xl);
+    font-weight: var(--weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-1);
+}
+
+.cardTitleTh {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-3);
+}
+
+.cardDescription {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-1);
+    flex-grow: 1;
+}
+
+.cardDescriptionTh {
+    color: var(--color-text-tertiary);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-4);
+}
+
+.cardTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-6);
+}
+
+.cardLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    width: 100%;
+    margin-top: auto;
+}
+
+.badge {
+    font-size: var(--text-xs);
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-secondary);
+}
+
+/* Notice */
+.notice {
+    text-align: center;
+    padding: var(--space-6);
+    background-color: var(--color-bg-secondary);
+    border-radius: var(--radius-md);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.notice p {
+    margin-bottom: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+}
+
+.notice p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

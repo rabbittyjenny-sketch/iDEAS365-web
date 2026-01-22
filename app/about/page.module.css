@@ -1,0 +1,128 @@
+.main {
+    min-height: 100vh;
+    padding-top: 160px;
+    background-color: var(--color-space-white);
+}
+
+.hero {
+    padding: var(--space-16) 0 var(--space-8);
+    text-align: center;
+    border-left: var(--border-accent) solid var(--color-anchor-black);
+}
+
+.hero h1 {
+    font-size: var(--text-5xl);
+    margin-bottom: var(--space-2);
+}
+
+.subtitle {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.section {
+    border-left: var(--border-accent) solid var(--color-system-blue);
+    padding-left: var(--space-6);
+}
+
+.lead {
+    font-size: var(--text-xl);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-8);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-6);
+}
+
+.grid h3 {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-2);
+}
+
+.grid p {
+    color: var(--color-text-secondary);
+}
+
+.background {
+    border-left: var(--border-accent) solid var(--color-insight-yellow);
+    padding-left: var(--space-6);
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+}
+
+.list li {
+    padding: var(--space-3) 0;
+    padding-left: var(--space-4);
+    border-bottom: var(--border-width) solid var(--color-border);
+    position: relative;
+}
+
+.list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-insight-yellow);
+    font-weight: var(--weight-bold);
+}
+
+.list li:last-child {
+    border-bottom: none;
+}
+
+.media {
+    border-left: var(--border-accent) solid var(--color-action-red);
+    padding-left: var(--space-6);
+}
+
+.mediaGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+}
+
+.placeholder {
+    aspect-ratio: 16 / 9;
+    background-color: var(--color-bg-secondary);
+    border: var(--border-width-thick) dashed var(--color-border);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.placeholder p {
+    color: var(--color-text-tertiary);
+    font-size: var(--text-sm);
+}
+
+.note {
+    text-align: center;
+    color: var(--color-text-tertiary);
+    font-size: var(--text-sm);
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+
+    .hero,
+    .section,
+    .background,
+    .media {
+        border-left-width: var(--border-width-thick);
+        padding-left: var(--space-3);
+    }
+
+    .mediaGrid {
+        grid-template-columns: 1fr;
+    }
+}

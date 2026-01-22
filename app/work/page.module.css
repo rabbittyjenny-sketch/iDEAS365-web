@@ -1,0 +1,176 @@
+.main {
+    padding-top: 160px;
+    /* Increased to 160px for maximum safety clearance */
+    padding-bottom: var(--space-8);
+}
+
+.hero {
+    padding: var(--space-16) 0 var(--space-8);
+    text-align: center;
+    background-color: var(--color-base-white);
+    border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.title {
+    font-size: var(--text-5xl);
+    margin-bottom: var(--space-2);
+    color: var(--color-text-primary);
+    font-weight: var(--weight-bold);
+}
+
+.subtitle {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: 0;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.subtitle+.subtitle {
+    margin-top: var(--space-2);
+}
+
+.process {
+    background-color: var(--color-base-white);
+    /* Removed text-align: center from container to prevent children inheriting it */
+}
+
+.process h2 {
+    text-align: center;
+    /* Center ONLY the header */
+    margin-bottom: var(--space-8);
+}
+
+.steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    margin-top: var(--space-8);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.step {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: var(--space-4);
+    align-items: flex-start;
+    padding-bottom: var(--space-8);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.stepContent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    text-align: left;
+    align-items: flex-start;
+    width: 100%;
+    /* Force full width to prevent centering */
+    flex: 1;
+}
+
+.step:last-child {
+    border-bottom: none;
+}
+
+.number {
+    font-family: var(--font-english);
+    font-size: var(--text-h2);
+    font-weight: var(--weight-bold);
+    color: var(--color-system-blue);
+    /* Changed to blue for impact */
+    line-height: 1;
+}
+
+.workWith {
+    border-left: 4px solid var(--color-insight-yellow);
+    padding-left: var(--space-6);
+}
+
+.dontWork {
+    border-left: 4px solid var(--color-action-red);
+    padding-left: var(--space-6);
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+}
+
+.list li {
+    padding: var(--space-4) 0;
+    /* Increased padding for breathing room */
+    padding-left: var(--space-6);
+    /* More indent for arrow breathing room */
+    border-bottom: var(--border-width) solid var(--color-border);
+    position: relative;
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    /* Increased line-height for better readability */
+}
+
+.list li span.text-thai {
+    margin-top: var(--space-1);
+    /* Add space between Eng and Thai */
+    display: block;
+    /* Reinforce block here just in case */
+    opacity: 0.8;
+}
+
+.list li::before {
+    content: '→';
+    position: absolute;
+    left: var(--space-1);
+    /* Adjust arrow position */
+    font-weight: var(--weight-bold);
+    font-size: 1.2em;
+    /* Slightly larger arrow */
+    top: var(--space-4);
+    /* Align with first line roughly */
+}
+
+.workWith .list li::before {
+    color: var(--color-insight-yellow);
+}
+
+.dontWork .list li::before {
+    color: var(--color-action-red);
+}
+
+.list li:last-child {
+    border-bottom: none;
+}
+
+.galleryNav {
+    text-align: center;
+    background-color: var(--color-base-off-white);
+    border-top: 1px solid var(--color-border);
+}
+
+.navGrid {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    margin-top: var(--space-6);
+}
+
+.navBtn {
+    min-width: 160px;
+}
+
+@media (max-width: 768px) {
+    .navGrid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navBtn {
+        width: 100%;
+        max-width: 300px;
+    }
+}

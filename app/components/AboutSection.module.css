@@ -1,0 +1,250 @@
+.section {
+    padding: var(--space-20) 0;
+    /* Standardized page padding */
+    background-color: var(--color-base-white);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: var(--space-16);
+}
+
+.title {
+    font-size: var(--text-5xl);
+    font-weight: var(--weight-bold);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+    line-height: 1.1;
+    margin-bottom: var(--space-2);
+}
+
+/* Profile Section */
+.profile {
+    display: flex;
+    align-items: center;
+    gap: var(--space-12);
+    /* More gap between image and info */
+    margin-bottom: var(--space-20);
+    padding: var(--space-10);
+    background-color: var(--color-bg-secondary);
+    border-radius: var(--radius-card);
+    border: 1px solid var(--color-border);
+}
+
+.profileImagePlaceholder {
+    width: 240px;
+    height: 240px;
+    background-color: var(--color-base-white);
+    border-radius: var(--radius-full);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid var(--color-border);
+    flex-shrink: 0;
+}
+
+.profileInfo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.profileName {
+    font-size: var(--text-3xl);
+    margin-bottom: 0;
+}
+
+.profileRole {
+    font-size: var(--text-xl);
+    color: var(--color-system-blue);
+    font-weight: var(--weight-medium);
+}
+
+.profileBio {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.profileBio p {
+    font-size: var(--text-lg);
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    max-width: 65ch;
+}
+
+/* Common Section Styles */
+.philosophy,
+.background,
+.gallery,
+.caseStudy {
+    margin-bottom: var(--space-20);
+}
+
+.sectionSubtitle {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-10);
+    border-left: 6px solid var(--color-system-blue);
+    padding-left: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Philosophy */
+.philosophyContent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+}
+
+.philosophyCard {
+    background-color: var(--color-base-white);
+    padding: var(--space-8);
+    border-radius: var(--radius-card);
+    border: 1px solid var(--color-border);
+    transition: all var(--transition-base);
+}
+
+.philosophyCard:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-subtle);
+}
+
+.cardDot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin-bottom: var(--space-4);
+}
+
+.yellow {
+    background-color: var(--color-insight-yellow);
+}
+
+.blue {
+    background-color: var(--color-system-blue);
+}
+
+.green {
+    background-color: var(--color-growth-green);
+}
+
+.philosophyCard h4 {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-4);
+}
+
+.philosophyCard p {
+    line-height: 1.6;
+    margin-bottom: var(--space-2);
+}
+
+/* Background */
+.backgroundContent {
+    background-color: var(--color-base-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    padding: var(--space-10);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.backgroundItem {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+}
+
+.bulletPoint {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color-system-blue);
+    margin-top: 8px;
+    flex-shrink: 0;
+}
+
+.backgroundItem p {
+    font-size: var(--text-lg);
+    margin-bottom: 2px;
+}
+
+/* Case Study */
+.caseStudyCard {
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-left: 6px solid var(--color-system-blue);
+    border-radius: var(--radius-card);
+    padding: var(--space-12);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+}
+
+.caseStudyCard h4 {
+    font-size: var(--text-3xl);
+    margin-bottom: 0;
+}
+
+.caseStudySection {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.caseStudySection h5 {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    color: var(--color-system-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+.caseStudySection p,
+.caseStudySection ul {
+    font-size: var(--text-lg);
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+}
+
+.caseStudyInsight {
+    padding: var(--space-6);
+    background-color: var(--color-base-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    font-size: var(--text-lg);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .philosophyContent {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: var(--space-12) 0;
+    }
+
+    .profile {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--space-8);
+    }
+
+    .profileImagePlaceholder {
+        width: 180px;
+        height: 180px;
+    }
+
+    .caseStudyCard {
+        padding: var(--space-8);
+    }
+}

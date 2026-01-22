@@ -1,0 +1,340 @@
+/* Main Page Structure */
+.pageWrapper {
+    background-color: var(--color-base-white);
+    min-height: 100vh;
+}
+
+.main {
+    padding-top: 120px;
+    padding-bottom: var(--space-20);
+    /* Large space before footer */
+}
+
+/* Hero Header */
+.hero {
+    text-align: center;
+    padding: var(--space-20) 0 var(--space-20);
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: var(--space-20);
+}
+
+.hero {
+    text-align: center;
+    padding: var(--space-20) 0;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: var(--space-20);
+    background-color: var(--color-base-white);
+}
+
+.heroContent {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6);
+}
+
+.title {
+    font-size: var(--text-h1);
+    font-weight: var(--weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-2);
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+}
+
+.subtitleGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.subtitle {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    margin-bottom: 0;
+    line-height: 1.6;
+}
+
+.thaiHeader {
+    font-size: var(--text-xl);
+    color: var(--color-text-primary);
+    font-weight: var(--weight-medium);
+}
+
+/* Content Grid Layout */
+.contentGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 12rem;
+    /* Substantial gap between main sections for breathing room */
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+}
+
+/* Section Common */
+.section {
+    width: 100%;
+}
+
+.sectionHeader {
+    border-left: 6px solid var(--color-system-blue);
+    padding-left: var(--space-6);
+    margin-bottom: var(--space-12);
+    text-align: left;
+    /* More breathing room after header */
+}
+
+.sectionTag {
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-system-blue);
+    font-weight: var(--weight-bold);
+    display: block;
+    margin-bottom: var(--space-2);
+}
+
+.sectionTitle {
+    font-size: var(--text-3xl);
+    font-weight: var(--weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: 0;
+}
+
+/* Process Steps */
+.steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+    /* Increased gap between steps */
+}
+
+.step {
+    display: flex;
+    gap: var(--space-8);
+    align-items: flex-start;
+}
+
+.stepNumber {
+    font-size: var(--text-xl);
+    font-weight: var(--weight-bold);
+    color: var(--color-system-blue);
+    background-color: rgba(66, 133, 244, 0.08);
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+.stepInfo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    text-align: left;
+    /* More space between title and description */
+}
+
+.stepInfo h3 {
+    font-size: var(--text-2xl);
+    margin-bottom: 0;
+    color: var(--color-text-primary);
+    font-weight: var(--weight-bold);
+}
+
+.stepInfo p {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 0;
+    line-height: 1.7;
+    max-width: 65ch;
+    /* Better readability */
+}
+
+.thaiText {
+    font-size: var(--text-base);
+    color: var(--color-text-primary) !important;
+    line-height: 1.8 !important;
+}
+
+/* Expectation Grid */
+.expectationGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+}
+
+.expectationCard {
+    padding: var(--space-10);
+    /* More internal padding */
+    background-color: var(--color-base-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    transition: all var(--transition-base);
+}
+
+.expectationCard:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-subtle);
+}
+
+.expectationCard h3 {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-4);
+    color: var(--color-system-blue);
+}
+
+.expectationCard p {
+    font-size: var(--text-base);
+    line-height: 1.7;
+    margin-bottom: var(--space-2);
+}
+
+/* Compatibility Boxes */
+.splitGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-12);
+}
+
+.compatBox {
+    padding: var(--space-10);
+    border-radius: var(--radius-card);
+    border: 1px solid var(--color-border);
+    background-color: var(--color-bg-secondary);
+}
+
+.compatBox:first-child {
+    border-top: 6px solid var(--color-insight-yellow);
+}
+
+.compatBox:last-child {
+    border-top: 6px solid var(--color-action-red);
+}
+
+.compatBox h2 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-6);
+}
+
+.checkList,
+.crossList {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    /* More space between list items */
+}
+
+.checkList li,
+.crossList li {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+}
+
+.checkIcon {
+    color: var(--color-growth-green);
+    font-weight: bold;
+    font-size: 1.4rem;
+    line-height: 1.2;
+}
+
+.crossIcon {
+    color: var(--color-action-red);
+    font-weight: bold;
+    font-size: 1.4rem;
+    line-height: 1.2;
+}
+
+.thaiSub {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    margin-top: 4px;
+    line-height: 1.6;
+}
+
+/* Bottom Note (Roadmap) */
+.bottomNote {
+    margin-top: var(--space-12);
+    padding: var(--space-12);
+    background: linear-gradient(135deg, rgba(66, 133, 244, 0.05) 0%, transparent 100%);
+    border-radius: var(--radius-card);
+    border: 1px solid rgba(66, 133, 244, 0.1);
+    border-left: 4px solid var(--color-system-blue);
+}
+
+.noteTitle {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-8);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-text-primary);
+}
+
+.roadmapList {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.roadmapList li {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+}
+
+.roadmapList li::before {
+    content: '→';
+    color: var(--color-system-blue);
+    font-weight: bold;
+}
+
+.thaiInline {
+    color: var(--color-text-primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main {
+        padding-top: 100px;
+        padding-bottom: var(--space-12);
+    }
+
+    .hero {
+        padding: var(--space-12) 0;
+    }
+
+    .contentGrid {
+        gap: var(--space-12);
+    }
+
+    .expectationGrid,
+    .splitGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .step {
+        gap: var(--space-4);
+    }
+
+    .stepNumber {
+        width: 44px;
+        height: 44px;
+        font-size: var(--text-base);
+    }
+}

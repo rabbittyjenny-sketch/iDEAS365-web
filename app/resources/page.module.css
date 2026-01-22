@@ -1,0 +1,97 @@
+.main {
+    min-height: 100vh;
+    padding-top: 160px;
+    background-color: var(--color-space-white);
+}
+
+.hero {
+    padding: var(--space-16) 0 var(--space-8);
+    text-align: center;
+    border-left: var(--border-accent) solid var(--color-anchor-black);
+}
+
+.subtitle {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.free {
+    border-left: var(--border-accent) solid var(--color-system-blue);
+    padding-left: var(--space-6);
+}
+
+.premium {
+    border-left: var(--border-accent) solid var(--color-insight-yellow);
+    padding-left: var(--space-6);
+}
+
+.lead {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-6);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--space-4);
+}
+
+.card {
+    padding: var(--space-5);
+    background-color: var(--color-space-white);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-sm);
+}
+
+.card h3 {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-2);
+}
+
+.card p {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-3);
+}
+
+.price {
+    display: block;
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-bold);
+    color: var(--color-insight-yellow);
+    margin-bottom: var(--space-2);
+}
+
+.status {
+    display: inline-block;
+    font-size: var(--text-sm);
+    color: var(--color-text-tertiary);
+    padding: var(--space-1) var(--space-2);
+    background-color: var(--color-bg-secondary);
+    border-radius: var(--radius-sm);
+}
+
+.note {
+    text-align: center;
+    color: var(--color-text-tertiary);
+    font-size: var(--text-sm);
+    font-style: italic;
+    margin-top: var(--space-6);
+}
+
+@media (max-width: 768px) {
+
+    .hero,
+    .free,
+    .premium {
+        border-left-width: var(--border-width-thick);
+        padding-left: var(--space-3);
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

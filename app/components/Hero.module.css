@@ -1,0 +1,324 @@
+/* Hero Section Styles - V3.0 Design System */
+
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background-color: var(--color-bg-primary);
+    /* Dot Grid Background Effect */
+    background-image: radial-gradient(var(--color-border) 1px, transparent 1px);
+    background-size: 32px 32px;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    align-items: center;
+    position: relative;
+    z-index: var(--z-base);
+}
+
+/* Content Column */
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+/* Heading Typography */
+/* Heading Typography */
+.heading {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-family: var(--font-english);
+    font-weight: var(--weight-bold);
+    font-size: var(--text-h3);
+    color: var(--color-text-primary);
+    margin: 0;
+    opacity: 0.8;
+}
+
+.name {
+    color: var(--color-text-primary);
+}
+
+.divider {
+    color: var(--color-text-tertiary);
+    font-weight: var(--weight-normal);
+}
+
+.brand {
+    /* REMOVED Gradient, used solid dark color per request */
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    color: var(--color-text-primary);
+    display: inline-block;
+}
+
+/* Roles / Subheading -> Prominent Concept Text */
+.roles {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+}
+
+.mainConcept {
+    font-family: var(--font-english);
+    font-size: var(--text-h1);
+    color: var(--color-text-primary);
+    font-weight: var(--weight-bold);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+/* Sub-roles displayed smaller */
+.subRoles {
+    margin-top: var(--space-2);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+    font-family: var(--font-english);
+    font-size: var(--text-small);
+    color: var(--color-text-tertiary);
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.roleSeparator {
+    color: var(--color-border);
+}
+
+/* Tagline - Hidden */
+.tagline {
+    display: none;
+}
+
+/* CTA Buttons - Minimal Style */
+.cta {
+    display: flex;
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+}
+
+.btnMinimal {
+    background-color: var(--color-border);
+    /* Light Grey */
+    color: var(--color-text-primary);
+    border: none;
+    border-radius: var(--radius-full);
+    padding: 12px 32px;
+    font-weight: var(--weight-semibold);
+    transition: all 0.2s ease;
+}
+
+.btnMinimal:hover {
+    background-color: var(--color-text-tertiary);
+    /* Darker Grey */
+    transform: translateY(-1px);
+}
+
+/* Override btn-outline for pill shape matching reference */
+.cta :global(.btn-outline) {
+    border-radius: var(--radius-full);
+    border-color: var(--color-text-primary);
+    color: var(--color-text-primary);
+    padding: 11px 31px;
+    /* Adjust for border width */
+}
+
+.cta :global(.btn-outline):hover {
+    background-color: var(--color-text-primary);
+    color: var(--color-base-white);
+}
+
+/* Scroll Indicator */
+.scrollIndicator {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-8);
+    font-family: var(--font-english);
+    font-size: var(--text-small);
+    color: var(--color-text-tertiary);
+    opacity: 0.8;
+    animation: bounce 2s infinite;
+}
+
+/* Illustration Column */
+.illustration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.illustrationPlaceholder {
+    width: 100%;
+    max-width: 500px;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Background Elements */
+.bgElements {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.bgCircle1,
+.bgCircle2,
+.bgCircle3 {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.6;
+    filter: blur(80px);
+}
+
+.bgCircle1 {
+    width: 400px;
+    height: 400px;
+    background-color: rgba(66, 133, 244, 0.05);
+    /* Blue */
+    top: -100px;
+    right: -100px;
+}
+
+.bgCircle2 {
+    width: 300px;
+    height: 300px;
+    background-color: rgba(251, 188, 5, 0.05);
+    /* Yellow */
+    bottom: 10%;
+    left: 10%;
+}
+
+.bgCircle3 {
+    width: 200px;
+    height: 200px;
+    background-color: rgba(234, 67, 53, 0.03);
+    /* Red */
+    top: 20%;
+    left: 40%;
+}
+
+/* Animations */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-5px);
+    }
+
+    60% {
+        transform: translateY(-3px);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+    .container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: var(--space-12);
+        padding-bottom: var(--space-12);
+    }
+
+    .content {
+        align-items: center;
+        order: 2;
+    }
+
+    .heading {
+        align-items: center;
+    }
+
+    .title {
+        flex-direction: column;
+        gap: var(--space-1);
+        font-size: var(--text-h2);
+        /* Reduced from h1 to prevent huge brand text on mobile */
+    }
+
+    .divider {
+        display: none;
+    }
+
+    .roles {
+        justify-content: center;
+        font-size: var(--text-body);
+    }
+
+    .tagline {
+        text-align: left;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .cta {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .cta :global(.btn) {
+        width: 100%;
+    }
+
+    .illustration {
+        order: 1;
+        margin-bottom: var(--space-4);
+    }
+
+    .illustrationPlaceholder {
+        max-width: 280px;
+    }
+
+    .scrollIndicator {
+        display: none;
+    }
+
+    .bgCircle1 {
+        width: 200px;
+        height: 200px;
+        right: -50px;
+    }
+}
