@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soul Slot</title>
+    <link rel="icon" type="image/png" href="/images/ideas365-logo.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Kanit:wght@300;400;600&family=Inter:wght@400;700&family=Prompt:wght@300;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            background-color: #050505;
+            color: #fff;
+            transition: background 0.5s ease;
+        }
+
+        .bg-hub {
+            background-image: radial-gradient(circle at 50% 50%, #1a0510 0%, #000 100%);
+            font-family: 'Kanit', sans-serif;
+        }
+
+        .bg-game {
+            background-image:
+                linear-gradient(rgba(10, 10, 10, 0.9), rgba(0, 0, 0, 0.95)),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23333' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            font-family: 'Prompt', 'Inter', sans-serif;
+        }
+
+        /* Service Card Styles */
+        .service-card {
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            background: linear-gradient(145deg, rgba(30, 20, 40, 0.6), rgba(10, 10, 20, 0.8));
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: currentColor;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .door-img-container img {
+            transition: transform 0.5s ease;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.1));
+        }
+
+        .service-card:hover .door-img-container img {
+            transform: scale(1.1) rotate(3deg);
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
+        }
+
+        .card-purple {
+            border-color: rgba(168, 85, 247, 0.3);
+            color: #e9d5ff;
+        }
+
+        /* Slot Machine UI */
+        .font-tech {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .machine-body {
+            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+            border: 4px solid #4c1d95;
+            box-shadow: 0 0 30px rgba(124, 58, 237, 0.3), inset 0 0 50px rgba(0, 0, 0, 0.8);
+        }
+
+        .reel-window {
+            background: #000;
+            border: 2px solid #333;
+            position: relative;
+        }
+
+        .reel-window::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, transparent 15%, transparent 85%, rgba(0, 0, 0, 0.8) 100%);
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .reel-item {
+            font-size: 4rem;
+            text-shadow: 0 0 15px rgba(56, 189, 248, 0.8);
+            background: linear-gradient(to bottom, #fff 40%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-spin {
+            background: linear-gradient(180deg, #d946ef 0%, #a21caf 100%);
+            box-shadow: 0 0 15px #d946ef;
+        }
+
+        .btn-stop {
+            background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%);
+        }
+
+        .reading-card {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #7c3aed;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-out;
+        }
+
+        .reading-card.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* TTS Player UI */
+        .audio-player-ui {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid #ff00ff;
+            border-radius: 30px;
+            padding: 10px 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+            z-index: 100;
+            width: 90%;
+            max-width: 400px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .audio-player-ui.show {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .wave-bar {
+            width: 3px;
+            height: 10px;
+            background: #ff00ff;
+            border-radius: 2px;
+            animation: soundWave 0.5s infinite alternate;
+        }
+
+        @keyframes soundWave {
+            0% {
+                height: 8px;
+            }
+
+            100% {
+                height: 25px;
+            }
+        }
+
+        .view-section {
+            display: none;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        .view-section.active {
+            display: block;
+        }
+
+        .fade-out {
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .fade-in {
+            opacity: 1 !important;
+            transition: opacity 0.5s;
+        }
+    </style>
+</head>
+
+<body id="app-body" class="bg-hub">
+
+    <!-- HUB VIEW -->
+    <section id="view-hub" class="view-section active">
+        <header class="text-center py-10 border-b border-white/10 mb-10">
+            <div class="mb-4">
+                <!-- Use uploaded logo image -->
+                <div class="h-24 md:h-32 mx-auto flex items-center justify-center">
+                    <img src="/images/soulsister_logo.png" alt="Soul Slot Logo"
+                        class="h-full object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+                </div>
+            </div>
+            <p class="text-gray-400 tracking-widest text-sm uppercase font-light">Digital Sanctuary for the Modern
+                Spirit</p>
+        </header>
+
+        <main class="container mx-auto px-4 pb-20">
+            <p class="text-center text-purple-300 mb-10 text-lg font-light">เชื่อมต่อกับพลังภายใน
+                ค้นหาคำตอบที่ซ่อนอยู่ในจักรวาล</p>
+
+            <div class="max-w-xl mx-auto">
+                <!-- Soul Slot Only -->
+                <div class="service-card card-purple rounded-2xl p-6 relative group" onclick="switchToGame()">
+                    <div class="flex items-start gap-6">
+                        <div class="door-img-container flex-shrink-0 w-24">
+                            <img src="https://api.dicebear.com/7.x/shapes/svg?seed=door2&backgroundColor=f59e0b"
+                                alt="Door 2" class="w-full h-auto rounded-lg">
+                        </div>
+                        <div class="flex-1 pt-2">
+                            <h3 class="text-2xl font-bold mb-1 orbitron">Soul Slot</h3>
+                            <p class="text-sm text-purple-300 mb-2 font-bold">สุ่มรูนส์แห่งโชคชะตา</p>
+                            <p class="text-sm text-gray-300 font-light">หมุนรูนส์ 3 ตำแหน่ง: ตัวตน, สิ่งกระทบ และคำแนะนำ
+                            </p>
+                        </div>
+                        <div class="self-center text-2xl group-hover:translate-x-2 transition-transform">→</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <!-- GAME VIEW -->
+    <section id="view-game" class="view-section relative">
+        <button onclick="switchToHub()"
+            class="absolute top-4 left-4 z-[100] text-gray-400 hover:text-white flex items-center gap-2 bg-black/50 px-4 py-2 rounded-full border border-gray-700">
+            <i class="fa-solid fa-arrow-left"></i> <span>Back to Sanctuary</span>
+        </button>
+
+        <div id="intro-screen"
+            class="absolute inset-0 z-50 flex flex-col items-center justify-center bg-black/95 p-6 text-center">
+            <div class="max-w-md w-full space-y-8">
+                <!-- Added space to "the SOUL SLOT" as requested -->
+                <h1
+                    class="font-tech text-5xl font-black italic tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+                    the SOUL SLOT</h1>
+                <div class="p-6 rounded-2xl border border-purple-500/30 bg-purple-900/10">
+                    <!-- Split instruction text into two lines as requested -->
+                    <p class="text-lg text-purple-200 font-light leading-relaxed">
+                        ตั้งจิตอธิษฐานถึงคำถามที่ต้องการคำตอบ <br> แล้วกดเริ่มกันเลย
+                    </p>
+                </div>
+                <button onclick="enterGameMode()"
+                    class="w-full py-4 rounded-full font-bold text-2xl bg-gradient-to-r from-purple-600 to-pink-600 hover:scale-105 transition-transform">START</button>
+            </div>
+        </div>
+
+        <div id="game-content" class="w-full min-h-screen flex flex-col items-center justify-center p-4 pt-16"
+            style="display: none; opacity: 0;">
+            <div class="machine-body rounded-3xl p-6 w-full max-w-lg">
+                <div class="mb-6 text-center">
+                    <h2 class="font-tech text-3xl font-black text-purple-400 opacity-80">RUNE ORACLE</h2>
+                </div>
+
+                <div class="bg-gray-900 p-4 rounded-xl border border-purple-900/50 mb-6">
+                    <div class="flex gap-2">
+                        <div
+                            class="reel-window flex-1 h-32 rounded-lg flex items-center justify-center overflow-hidden bg-gray-950">
+                            <div id="reel1" class="reel-item font-tech">ᚠ</div>
+                        </div>
+                        <div
+                            class="reel-window flex-1 h-32 rounded-lg flex items-center justify-center overflow-hidden bg-gray-950">
+                            <div id="reel2" class="reel-item font-tech">ᚢ</div>
+                        </div>
+                        <div
+                            class="reel-window flex-1 h-32 rounded-lg flex items-center justify-center overflow-hidden bg-gray-950">
+                            <div id="reel3" class="reel-item font-tech">ᚦ</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-3 mb-6">
+                    <button onclick="stopReel(0)" id="btn-stop-1" disabled
+                        class="btn-stop py-3 rounded font-bold font-tech text-sm disabled:opacity-30">STOP I</button>
+                    <button onclick="stopReel(1)" id="btn-stop-2" disabled
+                        class="btn-stop py-3 rounded font-bold font-tech text-sm disabled:opacity-30">STOP II</button>
+                    <button onclick="stopReel(2)" id="btn-stop-3" disabled
+                        class="btn-stop py-3 rounded font-bold font-tech text-sm disabled:opacity-30">STOP III</button>
+                </div>
+
+                <button onclick="spin()" id="spin-btn"
+                    class="btn-spin w-full py-5 rounded-2xl font-black text-2xl text-white font-tech uppercase active:scale-95 transition-all">SPIN
+                    RUNES</button>
+                <div id="status-display" class="mt-4 text-center text-xs text-purple-300 font-mono">SYSTEM READY</div>
+            </div>
+
+            <div id="reading-section" class="w-full max-w-lg grid grid-cols-1 md:grid-cols-3 gap-4 hidden mt-10 mb-10">
+                <div class="reading-card p-4 rounded-xl">
+                    <div class="text-[10px] text-yellow-300 font-bold mb-1">I. SELF</div>
+                    <div id="rune-icon-1" class="text-3xl mb-2">ᚠ</div>
+                    <p id="desc-1" class="text-xs text-gray-300 leading-tight">...</p>
+                </div>
+                <div class="reading-card p-4 rounded-xl">
+                    <div class="text-[10px] text-blue-300 font-bold mb-1">II. INFLUENCE</div>
+                    <div id="rune-icon-2" class="text-3xl mb-2">ᚢ</div>
+                    <p id="desc-2" class="text-xs text-gray-300 leading-tight">...</p>
+                </div>
+                <div class="reading-card p-4 rounded-xl">
+                    <div class="text-[10px] text-green-300 font-bold mb-1">III. ADVICE</div>
+                    <div id="rune-icon-3" class="text-3xl mb-2">ᚦ</div>
+                    <p id="desc-3" class="text-xs text-gray-300 leading-tight">...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TTS Player -->
+    <div id="audio-player" class="audio-player-ui">
+        <div class="flex gap-1 items-center mr-3">
+            <div class="wave-bar" style="animation-delay: 0s"></div>
+            <div class="wave-bar" style="animation-delay: 0.1s"></div>
+            <div class="wave-bar" style="animation-delay: 0.2s"></div>
+        </div>
+        <div class="flex-1 overflow-hidden">
+            <p class="text-[10px] text-pink-500 font-bold">SOUL SISTER AI</p>
+            <p id="tts-status" class="text-[10px] text-white truncate">กำลังอ่านคำทำนาย...</p>
+        </div>
+        <button class="text-white" onclick="stopVoice()"><i class="fa-solid fa-circle-stop"></i></button>
+    </div>
+
+    <script>
+        const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQY88GaXEpxyk0PSXXS0s-hq-djqMgBFdkiVUDNMG2zzMOhfMAWUgJyo3dipXCWEKGzAE1EvLaL9ER6/pub?gid=1179948221&single=true&output=csv';
+        const runes = ['ᚠ', 'ᚢ', 'ᚦ', 'ᚨ', 'ᚱ', 'ᚲ', 'ᚷ', 'ᚹ', 'ᚺ', 'ᚾ', 'ᛁ', 'ᛃ', 'ᛇ', 'ᛈ', 'ᛉ', 'ᛊ', 'ᛏ', 'ᛒ', 'ᛖ', 'ᛗ', 'ᛚ', 'ᛜ', 'ᛞ', 'ᛟ'];
+
+        let runesData = {};
+        let isDataLoaded = false;
+        let synth = window.speechSynthesis;
+        let utterance;
+
+        // Init Data
+        Papa.parse(sheetUrl, {
+            download: true,
+            header: true,
+            complete: (res) => {
+                res.data.forEach((row, i) => {
+                    const id = row.runes_id || (i + 1).toString();
+                    runesData[id] = row;
+                });
+                isDataLoaded = true;
+                console.log("Oracle Data Ready");
+            }
+        });
+
+        // Navigation
+        function switchToGame() {
+            document.getElementById('view-hub').classList.remove('active');
+            document.getElementById('view-game').classList.add('active');
+            document.getElementById('app-body').className = 'bg-game';
+            stopVoice();
+        }
+
+        function switchToHub() {
+            document.getElementById('view-game').classList.remove('active');
+            document.getElementById('view-hub').classList.add('active');
+            document.getElementById('app-body').className = 'bg-hub';
+            stopVoice();
+        }
+
+        async function enterGameMode() {
+            await Tone.start();
+            initAudio();
+            document.getElementById('intro-screen').classList.add('fade-out');
+            setTimeout(() => {
+                document.getElementById('intro-screen').style.display = 'none';
+                document.getElementById('game-content').style.display = 'flex';
+                document.getElementById('game-content').classList.add('fade-in');
+            }, 500);
+        }
+
+        // Game Logic
+        let intervals = [null, null, null];
+        let isSpinning = [false, false, false];
+        const reelEls = [document.getElementById('reel1'), document.getElementById('reel2'), document.getElementById('reel3')];
+        const stopBtns = [document.getElementById('btn-stop-1'), document.getElementById('btn-stop-2'), document.getElementById('btn-stop-3')];
+
+        let clickSynth, stopSynth, bellSynth;
+        function initAudio() {
+            clickSynth = new Tone.MembraneSynth({ pitchDecay: 0.01, oscillator: { type: "square" }, envelope: { attack: 0.001, decay: 0.05, sustain: 0 } }).toDestination();
+            stopSynth = new Tone.MembraneSynth({ octaves: 4, envelope: { attack: 0.001, decay: 0.2 } }).toDestination();
+            bellSynth = new Tone.PolySynth(Tone.Synth).toDestination();
+            clickSynth.volume.value = -20;
+        }
+
+        function spin() {
+            if (!isDataLoaded) return;
+            stopVoice();
+            document.getElementById('reading-section').classList.add('hidden');
+            document.getElementById('spin-btn').disabled = true;
+            document.getElementById('status-display').innerText = "SPINNING...";
+
+            for (let i = 0; i < 3; i++) {
+                isSpinning[i] = true;
+                stopBtns[i].disabled = false;
+                intervals[i] = setInterval(() => {
+                    reelEls[i].innerText = runes[Math.floor(Math.random() * runes.length)];
+                    if (Math.random() > 0.8) clickSynth.triggerAttackRelease("A4", "32n");
+                }, 70);
+            }
+        }
+
+        function stopReel(i) {
+            clearInterval(intervals[i]);
+            isSpinning[i] = false;
+            stopBtns[i].disabled = true;
+            stopSynth.triggerAttackRelease("C2", "16n");
+
+            const finalIdx = Math.floor(Math.random() * runes.length);
+            reelEls[i].innerText = runes[finalIdx];
+            reelEls[i].dataset.id = finalIdx + 1;
+
+            if (isSpinning.every(s => !s)) {
+                document.getElementById('spin-btn').disabled = false;
+                document.getElementById('status-display').innerText = "COMPLETE";
+                bellSynth.triggerAttackRelease(["C5", "E5", "G5"], "4n");
+                displayReading();
+            }
+        }
+
+        function displayReading() {
+            const section = document.getElementById('reading-section');
+            section.classList.remove('hidden');
+
+            let fullReadingText = "คำทำนายของคุณคือ ";
+
+            for (let i = 0; i < 3; i++) {
+                const id = reelEls[i].dataset.id;
+                const data = runesData[id];
+                const card = section.children[i];
+                const desc = card.querySelector('p');
+                const icon = card.querySelector('div:nth-child(2)');
+
+                icon.innerText = reelEls[i].innerText;
+
+                let text = "กำลังโหลด...";
+                if (data) {
+                    if (i === 0) { text = data.Self || data.self; fullReadingText += "ตัวตนของคุณคือ " + text + ". "; }
+                    if (i === 1) { text = data.Influence || data.influence; fullReadingText += "สิ่งที่จะมากระทบคือ " + text + ". "; }
+                    if (i === 2) { text = data.Advice || data.advice; fullReadingText += "คำแนะนำคือ " + text; }
+                }
+                desc.innerText = text;
+
+                setTimeout(() => card.classList.add('show'), i * 200);
+            }
+
+            // Trigger TTS
+            speak(fullReadingText);
+        }
+
+        function speak(text) {
+            stopVoice();
+            utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'th-TH';
+            utterance.rate = 1.0;
+
+            utterance.onstart = () => document.getElementById('audio-player').classList.add('show');
+            utterance.onend = () => document.getElementById('audio-player').classList.remove('show');
+
+            synth.speak(utterance);
+        }
+
+        function stopVoice() {
+            if (synth.speaking) synth.cancel();
+            document.getElementById('audio-player').classList.remove('show');
+        }
+    </script>
+</body>
+
+</html>

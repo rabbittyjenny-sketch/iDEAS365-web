@@ -63,7 +63,7 @@ export default function ShopSection() {
                         {premiumProducts.map((product) => (
                             <div key={product.id} className={`${styles.productCard} ${styles.premium} card`}>
                                 <div className={`${styles.categoryIndicator} ${styles[product.color]}`}></div>
-                                <div className={styles.productPrice}>{product.price}</div>
+                                <div className={styles.productPrice}>฿ — —</div>
                                 <h4 className={styles.productTitle}>{product.title}</h4>
                                 <p className={`${styles.productTitleTh} text-thai`}>{product.titleTh}</p>
                                 <p className={styles.productDescription}>{product.description}</p>

@@ -74,6 +74,12 @@
     font-weight: var(--weight-bold);
     margin-bottom: var(--space-1);
     line-height: 1.2;
+    transition: color var(--transition-fast);
+}
+
+/* Hover effect - Title changes to GREEN (matching Resources menu underline) */
+.productCard:hover .productTitle {
+    color: var(--color-growth-green);
 }
 
 .productTitleTh {
@@ -144,11 +150,20 @@
 
 .productPrice {
     position: absolute;
-    top: var(--space-4);
-    right: var(--space-4);
-    font-size: var(--text-lg);
-    font-weight: var(--weight-bold);
+    top: var(--space-6);
+    right: var(--space-6);
+    width: 80px;
+    height: 32px;
+    background-color: var(--color-bg-secondary);
+    border: 1.5px dashed var(--color-action-red);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--color-action-red);
+    font-weight: var(--weight-bold);
+    font-size: var(--text-base);
+    opacity: 0.8;
 }
 
 .header {

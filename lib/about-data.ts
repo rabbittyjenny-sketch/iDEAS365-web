@@ -21,7 +21,7 @@ export const philosophy = [
         color: "blue",
         title: "Operational Intelligence",
         desc: "Systems designed to reduce unnecessary effort without reducing results.",
-        descTh: "ระบบที่ออกแบบมาเพื่อลดพลังงานที่สูญเปล่า โดยไม่ลดผลลัพธ์"
+        descTh: "ระบบที่ตัดความเหนื่อยออก แต่ไม่ตัดผลลัพธ์"
     },
     {
         id: "quietly-confident",

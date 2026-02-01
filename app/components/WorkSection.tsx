@@ -59,41 +59,63 @@ export default function WorkSection({ initialCategory = 'all' }: WorkSectionProp
                 <div className={styles.grid}>
                     {filteredProjects.map((project) => (
                         <div key={project.id} className={`${styles.card} card`}>
+                            {/* Header: Title Left, Logo Right */}
                             <div className={styles.cardHeader}>
-                                {/* Micro-Element: Navigation Dot / Indicator - Replaces the large icon */}
-                                <div className={`${styles.projectDot} ${styles[project.iconType]}`}></div>
+                                {/* Left Side: Title */}
+                                <div className={styles.titleWrapper}>
+                                    <h3 className={styles.cardTitle}>{project.title}</h3>
+                                    <p className={`${styles.cardTitleTh} text-thai`}>{project.titleTh}</p>
+                                </div>
 
-                                {project.status === 'coming-soon' && (
-                                    <span className={styles.badge}>Coming Soon</span>
+                                {/* Right Side: Logo or Icon */}
+                                {project.logo ? (
+                                    <img
+                                        src={project.logo}
+                                        alt={`${project.title} logo`}
+                                        className={`${styles.projectLogo} ${project.logo.includes('ideas365') ? styles.logoIdeas365 : ''} ${project.logo.includes('soul') ? styles.logoSoul : ''} ${project.logo.includes('kaixin') ? styles.logoKaixin : ''}`}
+                                    />
+                                ) : (
+                                    <div className={`${styles.cardIcon} ${styles[`circle-${project.category === 'ai' ? 'yellow' : project.category === 'live' ? 'red' : 'green'}`]}`}>
+                                        <div className={`${styles.projectDot} ${styles[`circle-${project.category === 'ai' ? 'yellow' : project.category === 'live' ? 'red' : 'green'}`]}`}></div>
+                                    </div>
                                 )}
                             </div>
 
-                            <h3 className={styles.cardTitle}>{project.title}</h3>
-                            <p className={`${styles.cardTitleTh} text-thai`}>{project.titleTh}</p>
+                            {/* Status Badge */}
+                            {project.status === 'coming-soon' && (
+                                <div className={styles.statusWrapper}>
+                                    <span className="badge">Coming Soon</span>
+                                </div>
+                            )}
 
-                            <p className={styles.cardDescription}>{project.description}</p>
-                            <p className={`${styles.cardDescriptionTh} text-thai`}>{project.descriptionTh}</p>
+                            {/* Preview Image */}
+                            {project.previewImage && (
+                                <div className={styles.previewContainer}>
+                                    <img src={project.previewImage} alt={`${project.title} preview`} className={styles.previewImage} />
+                                </div>
+                            )}
 
-                            <div className={styles.cardTags}>
-                                {project.tags.map((tag) => (
-                                    <span key={tag} className={`badge badge-${project.category}`}>
-                                        {tag}
-                                    </span>
-                                ))}
+                            {/* Description */}
+                            <div className={styles.cardContent}>
+                                <p className={styles.cardDescription}>{project.description}</p>
+                                <p className={`${styles.cardDescriptionTh} text-thai`}>{project.descriptionTh}</p>
                             </div>
 
+                            {/* Footer Button (Resource Style Badge in Blue) */}
                             {project.link && (
-                                <a
-                                    href={project.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className={`${styles.cardLink} btn btn-outline`}
-                                >
-                                    View Project / ดูโปรเจกต์
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M6 3H3V13H13V10M10 3H13M13 3V6M13 3L6 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                                    </svg>
-                                </a>
+                                <div className={styles.cardFooter}>
+                                    <a
+                                        href={project.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={styles.viewButton}
+                                    >
+                                        View Project / ดูโปรเจกต์
+                                        <svg className={styles.btnIcon} width="16" height="16" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.3335 8.5H12.6668M12.6668 8.5L8.00016 3.83331M12.6668 8.5L8.00016 13.1666" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                        </svg>
+                                    </a>
+                                </div>
                             )}
                         </div>
                     ))}

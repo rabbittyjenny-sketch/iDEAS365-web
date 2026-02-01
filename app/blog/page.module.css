@@ -99,7 +99,7 @@
 }
 
 .card:hover .postTitle {
-    color: var(--color-system-blue);
+    color: var(--color-action-red);
 }
 
 .excerpt {

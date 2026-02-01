@@ -1,7 +1,33 @@
 .section {
-    padding: var(--space-20) 0;
-    /* Standardized page padding */
+    padding: var(--space-8) 0;
+    /* Reduced padding for About page specifically */
     background-color: var(--color-base-white);
+}
+
+/* Quote Section */
+.quote {
+    margin-bottom: var(--space-6);
+}
+
+.quoteText,
+.quoteTextTh {
+    margin: 0;
+    padding: 0;
+}
+
+.quoteText {
+    font-size: var(--text-xl);
+    font-weight: var(--weight-medium);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+    margin-bottom: var(--space-2);
+}
+
+.quoteTextTh {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    font-weight: var(--weight-regular);
+    line-height: 1.6;
 }
 
 .header {
@@ -10,27 +36,64 @@
 }
 
 .title {
-    font-size: var(--text-5xl);
+    font-size: var(--text-6xl);
     font-weight: var(--weight-bold);
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: var(--space-4);
     line-height: 1.1;
-    margin-bottom: var(--space-2);
+    margin-bottom: var(--space-4);
 }
 
 /* Profile Section */
 .profile {
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: var(--space-12);
-    /* More gap between image and info */
-    margin-bottom: var(--space-20);
-    padding: var(--space-10);
-    background-color: var(--color-bg-secondary);
+    margin-bottom: var(--space-12);
+}
+
+.profileImage {
+    width: auto;
+    height: auto;
+    max-width: 600px;
     border-radius: var(--radius-card);
-    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-subtle);
+}
+
+.galleryPlaceholder {
+    width: 100%;
+    height: 200px;
+    background-color: var(--color-bg-secondary);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-card);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-text-tertiary);
+}
+
+.videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: var(--radius-card);
+    background-color: var(--color-base-black);
+}
+
+.videoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: var(--radius-card);
 }
 
 .profileImagePlaceholder {
@@ -80,14 +143,16 @@
 /* Common Section Styles */
 .philosophy,
 .background,
+.linksSection,
 .gallery,
+.aiVoiceSection,
 .caseStudy {
-    margin-bottom: var(--space-20);
+    margin-bottom: var(--space-12);
 }
 
 .sectionSubtitle {
     font-size: var(--text-3xl);
-    margin-bottom: var(--space-10);
+    margin-bottom: var(--space-6);
     border-left: 6px solid var(--color-system-blue);
     padding-left: var(--space-6);
     display: flex;
@@ -175,6 +240,76 @@
     margin-bottom: 2px;
 }
 
+/* Gallery Grid */
+.galleryGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.galleryItem {
+    width: 100%;
+}
+
+/* External Links Section */
+.linksGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+    margin-bottom: var(--space-8);
+}
+
+.linkCard {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-8);
+    background-color: var(--color-base-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    color: var(--color-text-primary);
+}
+
+.linkCard:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-subtle);
+    border-color: var(--color-system-blue);
+    background-color: var(--color-bg-secondary);
+}
+
+.linkHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-2);
+}
+
+.linkTitle {
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-bold);
+    margin: 0;
+}
+
+.linkArrow {
+    font-size: var(--text-xl);
+    color: var(--color-system-blue);
+    transition: transform var(--transition-base);
+}
+
+.linkCard:hover .linkArrow {
+    transform: translateX(5px);
+}
+
+.linkDesc {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+
 /* Case Study */
 .caseStudyCard {
     background-color: var(--color-bg-secondary);
@@ -233,15 +368,42 @@
         padding: var(--space-12) 0;
     }
 
+    .quote {
+        margin-bottom: var(--space-8);
+    }
+
+    .quoteText {
+        font-size: var(--text-xl);
+    }
+
+    .quoteTextTh {
+        font-size: var(--text-lg);
+    }
+
     .profile {
         flex-direction: column;
         text-align: center;
         gap: var(--space-8);
     }
 
+    .profileImage {
+        max-width: 100%;
+        height: auto;
+    }
+
     .profileImagePlaceholder {
         width: 180px;
         height: 180px;
+    }
+
+    .galleryGrid {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+    }
+
+    .linksGrid {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
     }
 
     .caseStudyCard {

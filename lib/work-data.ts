@@ -11,6 +11,8 @@ export interface Project {
     link?: string;
     tags: string[];
     iconType: string;
+    logo?: string;
+    previewImage?: string;
 }
 
 export const projects: Project[] = [
@@ -24,7 +26,9 @@ export const projects: Project[] = [
         status: 'live',
         link: 'https://soul-card-oracle.lovable.app/',
         tags: ['AI', 'Mystical', 'Interactive'],
-        iconType: 'circle-yellow'
+        iconType: 'circle-yellow',
+        logo: '/images/soul-weaver-logo.png',
+        previewImage: '/images/soulcard.png'
     },
     {
         id: 'soul-weaver',
@@ -36,7 +40,9 @@ export const projects: Project[] = [
         status: 'live',
         link: 'https://the-soul-weaver.lovable.app/',
         tags: ['Spiritual', 'Journey', 'AI'],
-        iconType: 'circle-yellow'
+        iconType: 'circle-yellow',
+        logo: '/images/soul-weaver-logo.png',
+        previewImage: '/images/soulweaver.png'
     },
     {
         id: 'kaixin',
@@ -45,9 +51,12 @@ export const projects: Project[] = [
         description: 'Find your energy crystal based on birth date',
         descriptionTh: 'กรอกข้อมูล วัน/เดือน/ปีเกิด เพื่อค้นหา Energy Crystal ที่ช่วยเสริมพลังงานบวกให้กับคุณโดยเฉพาะ',
         category: 'ai',
-        status: 'coming-soon',
+        status: 'live',
+        link: 'https://kaisin-e3aeho.manus.space/',
         tags: ['Crystal', 'Energy', 'Personalized'],
-        iconType: 'circle-yellow'
+        iconType: 'circle-yellow',
+        logo: '/images/kaixin_logo.png',
+        previewImage: '/images/kaixin2.png'
     },
     {
         id: 'soul-slot',
@@ -56,9 +65,12 @@ export const projects: Project[] = [
         description: 'Rune slot machine for daily guidance',
         descriptionTh: 'หมุนสล๊อตลุ้นอักษรรูนส์ 3 ตัวจาก 24 สัญลักษณ์ เพื่อค้นหาคำตอบและแนวทางในแบบของคุณเอง',
         category: 'ai',
-        status: 'coming-soon',
+        status: 'live',
+        link: '/soul-slot/index.html',
         tags: ['Runes', 'Fortune', 'Game'],
-        iconType: 'circle-yellow'
+        iconType: 'circle-yellow',
+        logo: '/images/soulsister_logo.png',
+        previewImage: '/images/rune2.png'
     },
     {
         id: 'caption-factory',
@@ -70,7 +82,9 @@ export const projects: Project[] = [
         status: 'live',
         link: 'https://ideas365-caption-result.netlify.app/',
         tags: ['AI', 'Social Media', 'Marketing'],
-        iconType: 'circle-yellow'
+        iconType: 'circle-yellow',
+        logo: '/images/ideas365-logo.png',
+        previewImage: '/images/captionfactory.png'
     },
     {
         id: 'event-roi-calculator',
@@ -82,7 +96,9 @@ export const projects: Project[] = [
         status: 'live',
         link: 'https://event-simulator-roi.netlify.app/',
         tags: ['ROI', 'Events', 'Analytics'],
-        iconType: 'circle-green'
+        iconType: 'circle-green',
+        logo: '/images/ideas365-logo.png',
+        previewImage: '/images/roi.png'
     },
     {
         id: 'qr-generator',

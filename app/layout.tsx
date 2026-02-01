@@ -78,8 +78,8 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: "/images/ideas365-logo.png",
+    apple: "/images/ideas365-logo.png",
   },
 };
 
