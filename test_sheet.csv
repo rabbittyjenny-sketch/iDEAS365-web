@@ -1,0 +1,9 @@
+id,title,titleTh,description,descriptionTh,category,status,link,tags,logo,previewImage
+recipe-generator,AI Recipe Generator,ตัวสร้างสูตรอาหาร AI,Generates unique recipes based on available ingredients.,สร้างสูตรอาหารที่ไม่ซ้ำใครจากวัตถุดิบที่มีอยู่,ai,live,[URL],"AI,Food,Utility",[URL],[URL]
+budget-tracker,Monthly Budget Tracker,ตัวติดตามงบประมาณรายเดือน,Keep track of your expenses and income easily.,ติดตามค่าใช้จ่ายและรายรับของคุณได้อย่างง่ายดาย,business,live,[URL],"Finance,Tracking,Personal",[URL],[URL]
+thai-cultural-quiz,Thai Cultural Quiz,แบบทดสอบวัฒนธรรมไทย,An interactive quiz about Thai traditions and history.,แบบทดสอบเชิงโต้ตอบเกี่ยวกับประเพณีและประวัติศาสตร์ไทย,live,live,[URL],"Education,Culture,Interactive",[URL],[URL]
+caption-factory,Social Media Caption Factory,โรงงานแคปชั่นโซเชียลมีเดีย,AI-powered tool to generate engaging captions.,เครื่องมือที่ขับเคลื่อนด้วย AI เพื่อสร้างแคปชั่นที่น่าดึงดูด,ai,live,[URL],"AI,Marketing,Social Media",[URL],[URL]
+investment-planner,Long-Term Investment Planner,แผนการลงทุนระยะยาว,Simulate and plan your long-term investment strategies.,จำลองและวางแผนกลยุทธ์การลงทุนระยะยาวของคุณ,business,coming-soon,[URL],"Finance,Strategy,Simulation",[URL],[URL]
+ar-museum-tour,AR Museum Tour Guide,คู่มือทัวร์พิพิธภัณฑ์ AR,Augmented Reality guide for local museum exhibits.,คู่มือความเป็นจริงเสริมสำหรับนิทรรศการพิพิธภัณฑ์ท้องถิ่น,live,coming-soon,[URL],"AR,Museum,Education",[URL],[URL]
+freelance-crm,Freelancer CRM Tool,เครื่องมือ CRM สำหรับฟรีแลนซ์,Manage client relationships and project pipelines.,จัดการความสัมพันธ์กับลูกค้าและขั้นตอนของโปรเจกต์,business,live,[URL],"CRM,Productivity,Freelance",[URL],[URL]
+chatbot-builder,Custom Chatbot Builder,ตัวสร้างแชทบอทแบบกำหนดเอง,Create and deploy custom chatbots without coding.,สร้างและใช้งานแชทบอทที่กำหนดเองโดยไม่ต้องเขียนโค้ด,ai,live,[URL],"AI,Development,Customer Service",[URL],[URL]
