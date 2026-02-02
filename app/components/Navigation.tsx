@@ -72,7 +72,7 @@ export default function Navigation() {
             <div className={styles.container}>
                 <Link href="/" className={styles.logo}>
                     <img
-                        src="/logo_header.png"
+                        src="/images/ideas365-logo.png"
                         alt="JYNE : iDEAS365"
                         height={40}
                         style={{ height: '40px', width: 'auto' }}

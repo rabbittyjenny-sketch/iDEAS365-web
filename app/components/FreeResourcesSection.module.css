@@ -1,0 +1,78 @@
+/* Free Resources Section - Green Theme */
+.section {
+  background-color: var(--color-base-white);
+  border-left: 4px solid var(--color-growth-green);
+  padding-left: var(--space-6);
+  padding-top: 120px;
+  padding-bottom: 120px;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+.header {
+  margin-bottom: var(--space-12);
+  text-align: left;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-3);
+  font-family: var(--font-thai);
+}
+
+.description {
+  font-size: 1rem;
+  color: var(--color-text-tertiary);
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.loading {
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: 1.125rem;
+  padding: var(--space-8) 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .section {
+    padding-left: var(--space-3);
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .title {
+    font-size: 2.25rem;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
