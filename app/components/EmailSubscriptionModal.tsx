@@ -84,8 +84,8 @@ export default function EmailSubscriptionModal({ resource, onClose }: EmailSubsc
             if (data.success) {
                 setSuccess(true);
 
-                // Convert Google Drive view link to direct download link
-                const downloadUrl = resource.url.replace('/view', '/preview');
+                // Open Google Drive file with download toolbar
+                const downloadUrl = resource.url;
 
                 // Open download in new tab
                 const newWindow = window.open(downloadUrl, '_blank');
@@ -221,7 +221,7 @@ export default function EmailSubscriptionModal({ resource, onClose }: EmailSubsc
                             หากไม่เปิด กรุณากดปุ่มด้านล่าง:
                         </p>
                         <a
-                            href={resource.url.replace('/view', '/preview')}
+                            href={resource.url}
                             target="_blank"
                             rel="noopener noreferrer"
                             className={styles.downloadLink}
