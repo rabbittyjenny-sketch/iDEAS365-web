@@ -70,14 +70,15 @@ export default function Navigation() {
     return (
         <nav className={styles.nav}>
             <div className={styles.container}>
-                <Link href="/" className={styles.logo}>
+                {/* logo = back to the main island map on www.ideas365.space */}
+                <a href="https://www.ideas365.space/" className={styles.logo}>
                     <img
                         src="/images/ideas365-logo.png"
                         alt="JYNE : iDEAS365"
                         height={40}
                         style={{ height: '40px', width: 'auto' }}
                     />
-                </Link>
+                </a>
 
                 {/* Desktop Menu */}
                 <ul className={styles.menu}>
